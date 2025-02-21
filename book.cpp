@@ -5,10 +5,13 @@
 Book::Book(const std::string& name, const std::string& ISBN, const std::string& Author, double price, int qty) 
     : Product("book", name, price, qty), isbn_(ISBN), author_(Author){}
 
+Book::~Book(){}
+
 std::set<std::string> Book::keywords() const {
     std::set<std::string> keywords = parseStringToWords(name_);
+    std::set<std::string> authorwords = parseStringToWords(author_);
+    keywords.insert(authorwords.begin(), authorwords.end());
     keywords.insert(isbn_);
-    keywords.insert(author_);
     return keywords;
 }
 

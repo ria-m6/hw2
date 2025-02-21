@@ -8,7 +8,8 @@ Clothing::Clothing(const std::string& name, double price, int qty, const std::st
 //need to add keywords and display string and dump
 std::set<std::string> Clothing::keywords() const{
         std::set<std::string> keywords = parseStringToWords(name_);
-        keywords.insert(brand_);
+        std::set<std::string> brandwords = parseStringToWords(brand_);
+        keywords.insert(brandwords.begin(), brandwords.end());
         return keywords;
 }
 

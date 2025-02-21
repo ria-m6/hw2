@@ -2,7 +2,6 @@
 #define BOOK_H
 
 #include "product.h"
-
 #include <string>
 #include <set>
 
@@ -10,7 +9,8 @@
 class Book : public Product{
 public:
     Book(const std::string& name, const std::string& ISBN, const std::string& Author, double price, int qty);
-
+    ~Book();
+    
     std::set<std::string> keywords() const override;
 
     std::string displayString() const override;

@@ -45,6 +45,7 @@ int Product::getQty() const
  */
 bool Product::isMatch(std::vector<std::string>& searchTerms) const
 {
+    //need to write this
     return false;
 }
 

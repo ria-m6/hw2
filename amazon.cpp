@@ -132,7 +132,7 @@ int main(int argc, char* argv[])
                 }
             }
             else {
-                cout << "Unknown command" << endl;
+                cout << "Invalid request." << endl;
             }
         }
 
