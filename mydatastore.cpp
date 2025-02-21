@@ -33,13 +33,14 @@ MyDataStore::~MyDataStore() {
 void MyDataStore::addProduct(Product* p) {
     std::set<std::string> keywords = p->keywords();
     for (std::set<std::string>::iterator it = keywords.begin(); it != keywords.end(); ++it) {
-        std::cout << "Adding keyword: " << *it << " for product: " << p->getName() << std::endl; 
+        //std::cout << "Adding keyword: " << *it << " for product: " << p->getName() << std::endl; 
         keywordToProduct[*it].insert(p);
     }
 }
 
 
 void MyDataStore::addUser(User* u) {
+    //std::cout << u->getName() << std::endl;
     usernameToUser[u->getName()] = u;
 }
 
@@ -92,6 +93,7 @@ void MyDataStore::dump(std::ostream& ofile) {
 
 
 void MyDataStore::addToCart(const std::string& username, Product* product){
+    // std::cout << "Username reached here: " << username << std::endl;
     if (usernameToUser.find(username) != usernameToUser.end()) {
         usernameToCart[username].push_back(product);
     } else {
