@@ -133,9 +133,9 @@ int main(int argc, char* argv[])
                 string username;
                 if(ss>>username){
                     ds.buyCart(username);
-                    cout << "Cart Bought." << endl;
+                    // cout << "Cart Bought." << endl;
                 }else{
-                    cout << "Invalid request." << endl;
+                    cout << "Invalid username\n" << endl;
                 }
             }
             else {
