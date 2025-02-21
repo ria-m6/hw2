@@ -108,6 +108,7 @@ void MyDataStore::viewCart(const std::string& username){
     }
     int index = 1;
     for (std::vector<Product*>::iterator it = usernameToCart[username].begin(); it != usernameToCart[username].end(); ++it) {
+        std::cout<< "\n";
         std::cout << "Item " << index++ << "\n";
         std::cout << (*it)->displayString() << "\n";
     }
