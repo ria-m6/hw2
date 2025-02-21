@@ -22,9 +22,9 @@ std::string Book::displayString() const {
 
     std::ostringstream oss;
     oss << std::fixed << std::setprecision(2);
-    oss << name_ << "\n"
+    oss << name_ << "         \n"
     << "Author: " << author_ << " ISBN: " << isbn_ << "\n"
-    << price_ << " " << qty_ << " left.";
+    << price_ << "  " << qty_ << " left.";
     return oss.str();
 }
 

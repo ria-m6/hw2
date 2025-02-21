@@ -20,9 +20,9 @@ std::string Movie::displayString() const{
 
     std::ostringstream oss;
     oss << std::fixed << std::setprecision(2);
-    oss << name_ << "\n"
+    oss << name_ << "         \n"
     << "Genre: " << genre_ << " Rating: " << rating_ << "\n"
-    << price_ << " " << qty_ << " left.";
+    << price_ << "  " << qty_ << " left.";
     return oss.str();
 }
 
