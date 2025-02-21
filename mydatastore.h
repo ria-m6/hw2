@@ -27,20 +27,11 @@ public:
     void buyCart(const std::string& username);
 
 private:
-  
     
     std::map<std::string, User*> usernameToUser;//mapping username to User
     std::map<std::string, std::set<Product*> > keywordToProduct; // Maps keywords to products
     std::map<std::string, std::vector<Product*> > usernameToCart;//mapping username to carts
-    
 
-   
-    // std::vector<User*> users;
-    // std::map<std::string, std::set<Product*>> keywordIndex; // Keyword index
-
-    // void indexProduct(Product* product); // Index a product by its keywords
-    // std::map<std::string, std::set<Product*>> keywordMap; // Maps keywords to products
-    // std::vector<Product*> products;
 };
 
 #endif
