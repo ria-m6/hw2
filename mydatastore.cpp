@@ -10,10 +10,12 @@ MyDataStore::MyDataStore() {
 
 MyDataStore::~MyDataStore() {
     for (std::map<std::string, User*>::iterator it = usernameToUser.begin(); it != usernameToUser.end(); ++it) {
+        std::cout << "Deleting user: " << it->first << std::endl;
         delete it->second;
     }
     for (std::map<std::string, std::set<Product*>>::iterator it = keywordToProduct.begin(); it != keywordToProduct.end(); ++it) {
         for (std::set<Product*>::iterator prodIt = it->second.begin(); prodIt != it->second.end(); ++prodIt) {
+            std::cout << "Deleting product: " << (*prodIt)->getName() << std::endl;
             delete *prodIt;
         }
     }
