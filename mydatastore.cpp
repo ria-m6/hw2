@@ -13,13 +13,22 @@ MyDataStore::~MyDataStore() {
         std::cout << "Deleting user: " << it->first << std::endl;
         delete it->second;
     }
-    for (std::map<std::string, std::set<Product*>>::iterator it = keywordToProduct.begin(); it != keywordToProduct.end(); ++it) {
+
+    std::set<Product*> deletedProducts; // track deleted products
+    for (std::map<std::string, std::set<Product*> >::iterator it = keywordToProduct.begin(); it != keywordToProduct.end(); ++it) {
         for (std::set<Product*>::iterator prodIt = it->second.begin(); prodIt != it->second.end(); ++prodIt) {
-            std::cout << "Deleting product: " << (*prodIt)->getName() << std::endl;
-            delete *prodIt;
+            if (deletedProducts.find(*prodIt) == deletedProducts.end()) { // check if already deleted
+                std::cout << "Deleting product: " << (*prodIt)->getName() << std::endl;
+                delete *prodIt;  
+                deletedProducts.insert(*prodIt);  // mark as deleted
+            }
         }
     }
+
+    usernameToUser.clear();
+    keywordToProduct.clear();
 }
+
 
 void MyDataStore::addProduct(Product* p) {
     std::set<std::string> keywords = p->keywords();
@@ -39,7 +48,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
     // std::vector<Product*> result;
 
     std::set<Product*> resultSet;
-    if (terms.empty()) return {};
+    if (terms.empty()) {return std::vector<Product*>();}
     
     if (type == 0) { // AND search
         resultSet = keywordToProduct[terms[0]];
@@ -67,7 +76,7 @@ void MyDataStore::dump(std::ostream& ofile) {
     ofile << "Dumping products and users..." << std::endl;
 
     ofile << "<products>\n";
-    for (std::map<std::string, std::set<Product*>>::iterator it = keywordToProduct.begin(); it != keywordToProduct.end(); ++it) {
+    for (std::map<std::string, std::set<Product*> >::iterator it = keywordToProduct.begin(); it != keywordToProduct.end(); ++it) {
         for (std::set<Product*>::iterator prodIt = it->second.begin(); prodIt != it->second.end(); ++prodIt) {
             (*prodIt)->dump(ofile);
         }

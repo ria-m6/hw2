@@ -30,8 +30,8 @@ private:
   
     
     std::map<std::string, User*> usernameToUser;//mapping username to User
-    std::map<std::string, std::set<Product*>> keywordToProduct; // Maps keywords to products
-    std::map<std::string, std::vector<Product*>> usernameToCart;//mapping username to carts
+    std::map<std::string, std::set<Product*> > keywordToProduct; // Maps keywords to products
+    std::map<std::string, std::vector<Product*> > usernameToCart;//mapping username to carts
     
 
    
