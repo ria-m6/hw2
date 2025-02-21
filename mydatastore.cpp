@@ -85,7 +85,7 @@ void MyDataStore::dump(std::ostream& ofile) {
     for (std::map<std::string, User*>::iterator it = usernameToUser.begin(); it != usernameToUser.end(); ++it) {
         it->second->dump(ofile);
     }
-    ofile << "</users>\n";
+    ofile << "</users>";
 }
 
 
