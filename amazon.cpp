@@ -71,6 +71,7 @@ int main(int argc, char* argv[])
         stringstream ss(line);
         string cmd;
         if((ss >> cmd)) {
+            std::cout << "Command received: [" << cmd << "]" << std::endl;
             if( cmd == "AND") {
                 string term;
                 vector<string> terms;
@@ -101,7 +102,8 @@ int main(int argc, char* argv[])
                 done = true;
             } 
             /* Add support for other commands here */
-            else if(cmd == "ADDCART"){
+            
+            else if( cmd == "ADD"){
                 string username;
                 int index;
                 if(ss >> username >> index){
@@ -109,10 +111,10 @@ int main(int argc, char* argv[])
                         ds.addToCart(username, hits[index-1]);
                         cout<< "Added to cart." << endl;
                     } else{
-                        cout << "Invalid request." << endl;
+                        cout << "Invalid request 1." << endl;
                     }
                 } else{
-                    cout << "Invalid request." << endl;
+                    cout << "Invalid request 2." << endl;
                 }
             }
             else if(cmd == "VIEWCART"){
@@ -127,6 +129,7 @@ int main(int argc, char* argv[])
                 string username;
                 if(ss>>username){
                     ds.buyCart(username);
+                    cout << "Cart Bought." << endl;
                 }else{
                     cout << "Invalid request." << endl;
                 }

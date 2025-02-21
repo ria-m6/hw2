@@ -93,7 +93,7 @@ void MyDataStore::dump(std::ostream& ofile) {
 
 
 void MyDataStore::addToCart(const std::string& username, Product* product){
-    // std::cout << "Username reached here: " << username << std::endl;
+    std::cout << "Username reached here: " << username << std::endl;
     if (usernameToUser.find(username) != usernameToUser.end()) {
         usernameToCart[username].push_back(product);
     } else {
