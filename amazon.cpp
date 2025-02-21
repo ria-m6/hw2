@@ -102,13 +102,15 @@ int main(int argc, char* argv[])
                 done = true;
             } 
             /* Add support for other commands here */
-            
+            //reads input for ADD
             else if( cmd == "ADD"){
                 string username;
                 int index;
+                //checks if index is valid
                 if(ss >> username >> index){
                     //if(index >0 && static_cast<size_t>(index) <= hits.size()){
                     if(index >=1 && index <= static_cast<int>(hits.size())){
+                        //adds hit to cart
                         ds.addToCart(username, hits[index-1]);
                         cout<< "Added to cart." << endl;
                     } else{
@@ -121,6 +123,7 @@ int main(int argc, char* argv[])
             else if(cmd == "VIEWCART"){
                 string username;
                 if(ss>>username){
+                    //if username is valid, it'll view Cart
                     ds.viewCart(username);
                 } else{
                     cout << "Invalid request." << endl;
@@ -144,6 +147,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
+//given
 void displayProducts(vector<Product*>& hits)
 {
     int resultNo = 1;

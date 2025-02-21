@@ -5,7 +5,9 @@
 
 Movie::Movie(const std::string& name, double price, int qty, const std::string& GENRE, const std::string& RATING) 
     : Product("movie", name, price, qty), genre_(GENRE), rating_(RATING){}
+Movie::~Movie(){}
 
+//adds keywords from name and genre to set
 std::set<std::string> Movie::keywords() const{
     std::set<std::string> keywords = parseStringToWords(name_);
     std::set<std::string> genrewords = parseStringToWords(genre_);
@@ -13,6 +15,7 @@ std::set<std::string> Movie::keywords() const{
     return keywords;
 }
 
+//accurately displays string
 std::string Movie::displayString() const{
 
     std::ostringstream oss;
@@ -23,6 +26,7 @@ std::string Movie::displayString() const{
     return oss.str();
 }
 
+//dumps movie info
 void Movie::dump(std::ostream& os) const{
     os << "movie\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << genre_ << "\n" << rating_ << std::endl;
 }

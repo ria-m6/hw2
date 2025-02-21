@@ -1,4 +1,5 @@
 #include "mydatastore.h"
+#include "util.h"
 #include <cctype>
 #include <map>
 #include <set>
@@ -49,27 +50,48 @@ void MyDataStore::addUser(User* u) {
 std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int type) {
     // std::vector<Product*> result;
 
-    std::set<Product*> resultSet;
-    if (terms.empty()) {return std::vector<Product*>();}
+    // std::set<Product*> resultSet;
+    // if (terms.empty()) {return std::vector<Product*>();}
     
-    if (type == 0) { // AND search
-        resultSet = keywordToProduct[terms[0]];
-        for (size_t i = 1; i < terms.size(); i++) {
-            std::set<Product*> temp;
-            std::set_intersection(resultSet.begin(), resultSet.end(),
-                                  keywordToProduct[terms[i]].begin(), keywordToProduct[terms[i]].end(),
-                                  std::inserter(temp, temp.begin()));
-            resultSet = temp;
-        }
-    } else { // OR search
-        for (size_t i = 0; i < terms.size(); i++) {
-            resultSet.insert(keywordToProduct[terms[i]].begin(), keywordToProduct[terms[i]].end());
-        }
-    }
-    return std::vector<Product*>(resultSet.begin(), resultSet.end());
+    // if (type == 0) { // AND search
+    //     resultSet = keywordToProduct[terms[0]];
+    //     for (size_t i = 1; i < terms.size(); i++) {
+    //         std::set<Product*> temp;
+    //         std::set_intersection(resultSet.begin(), resultSet.end(),
+    //                               keywordToProduct[terms[i]].begin(), keywordToProduct[terms[i]].end(),
+    //                               std::inserter(temp, temp.begin()));
+    //         resultSet = temp;
+    //     }
+    // } else { // OR search
+    //     for (size_t i = 0; i < terms.size(); i++) {
+    //         resultSet.insert(keywordToProduct[terms[i]].begin(), keywordToProduct[terms[i]].end());
+    //     }
+    // }
+    // return std::vector<Product*>(resultSet.begin(), resultSet.end());
 
     
     // return result;
+
+    std::set<Product*> resultSet;
+    std::vector<Product*> result; 
+
+    if (terms.empty()) { return result; }
+
+    if (type == 0) { // AND search
+        resultSet = keywordToProduct[terms[0]];
+        for (size_t i = 1; i < terms.size(); i++) {
+            resultSet = setIntersection(resultSet, keywordToProduct[terms[i]]);
+        }
+    } else { // OR search
+        for (size_t i = 0; i < terms.size(); i++) {
+            resultSet = setUnion(resultSet, keywordToProduct[terms[i]]);
+        }
+    }
+
+    // Convert the set to a vector and assign to result
+    result.assign(resultSet.begin(), resultSet.end());
+
+    return result;
 }
 
 

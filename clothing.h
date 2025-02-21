@@ -16,7 +16,10 @@
 
 class Clothing: public Product{ //Product* newClothing = new Clothing(size_, brand_);
 public:
+    //constructor
     Clothing(const std::string& name, double price, int qty, const std::string& SIZE, const std::string& BRAND);
+    ~Clothing();
+
     //need to add keywords and display string and dump
     std::set<std::string> keywords() const override;
 
@@ -29,6 +32,7 @@ public:
     std::string getBRAND() const;
 
 private:
+    //unqiue to clothing child
     const std::string size_;
     const std::string brand_;
 };

@@ -8,6 +8,7 @@ Book::Book(const std::string& name, const std::string& ISBN, const std::string& 
 
 Book::~Book(){}
 
+//adds words from name, author, and isbn to keywords set
 std::set<std::string> Book::keywords() const {
     std::set<std::string> keywords = parseStringToWords(name_);
     std::set<std::string> authorwords = parseStringToWords(author_);
@@ -16,6 +17,7 @@ std::set<std::string> Book::keywords() const {
     return keywords;
 }
 
+//Prints out Book info
 std::string Book::displayString() const {
 
     std::ostringstream oss;
@@ -26,6 +28,7 @@ std::string Book::displayString() const {
     return oss.str();
 }
 
+//dumps book
 void Book::dump(std::ostream& os) const {
     os << "book\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << isbn_ << "\n" << author_ << std::endl;
 }

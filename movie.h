@@ -17,9 +17,10 @@
 class Movie: public Product{ //Product* newMovie = new Movie(genre_, rating_);
 public:
 
-        //prodName_, price_, qty_, genre_, rating_)
+    //Constructor + Destructor
     Movie(const std::string& name, double price, int qty, const std::string& GENRE, const std::string& RATING);
-
+    ~Movie();
+    //keywords, displayString, dump
     std::set<std::string> keywords() const override;
 
     std::string displayString() const override;
@@ -30,6 +31,7 @@ public:
     std::string getRATING() const;
 
 private:
+    //strings unique to movie child
     const std::string genre_;
     const std::string rating_;
 };
