@@ -33,6 +33,7 @@ MyDataStore::~MyDataStore() {
 void MyDataStore::addProduct(Product* p) {
     std::set<std::string> keywords = p->keywords();
     for (std::set<std::string>::iterator it = keywords.begin(); it != keywords.end(); ++it) {
+        std::cout << "Adding keyword: " << *it << " for product: " << p->getName() << std::endl; 
         keywordToProduct[*it].insert(p);
     }
 }
@@ -99,7 +100,9 @@ void MyDataStore::addToCart(const std::string& username, Product* product){
     
 }
 void MyDataStore::viewCart(const std::string& username){
+    std::cout<<username<<std::endl;
     if (usernameToCart.find(username) == usernameToCart.end()) {
+        // std::cout<<"This ran and is causing the error"<<std::endl;
         std::cout << "Invalid username";
         return;
     }
