@@ -10,7 +10,7 @@ MyDataStore::MyDataStore() {
 
 MyDataStore::~MyDataStore() {
     for (std::map<std::string, User*>::iterator it = usernameToUser.begin(); it != usernameToUser.end(); ++it) {
-        std::cout << "Deleting user: " << it->first << std::endl;
+        // std::cout << "Deleting user: " << it->first << std::endl;
         delete it->second;
     }
 
@@ -18,7 +18,7 @@ MyDataStore::~MyDataStore() {
     for (std::map<std::string, std::set<Product*> >::iterator it = keywordToProduct.begin(); it != keywordToProduct.end(); ++it) {
         for (std::set<Product*>::iterator prodIt = it->second.begin(); prodIt != it->second.end(); ++prodIt) {
             if (deletedProducts.find(*prodIt) == deletedProducts.end()) { // check if already deleted
-                std::cout << "Deleting product: " << (*prodIt)->getName() << std::endl;
+                // std::cout << "Deleting product: " << (*prodIt)->getName() << std::endl;
                 delete *prodIt;  
                 deletedProducts.insert(*prodIt);  // mark as deleted
             }
