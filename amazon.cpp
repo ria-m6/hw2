@@ -112,12 +112,12 @@ int main(int argc, char* argv[])
                     if(index >=1 && index <= static_cast<int>(hits.size())){
                         //adds hit to cart
                         ds.addToCart(username, hits[index-1]);
-                        cout<< "Added to cart." << endl;
+                        // cout<< "Added to cart." << endl;
                     } else{
-                        cout << "Invalid request 1." << endl;
+                        cout << "Invalid request." << endl;
                     }
                 } else{
-                    cout << "Invalid request 2." << endl;
+                    cout << "Invalid request." << endl;
                 }
             }
             else if(cmd == "VIEWCART"){

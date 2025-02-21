@@ -91,7 +91,7 @@ void MyDataStore::dump(std::ostream& ofile) {
 
 
 void MyDataStore::addToCart(const std::string& username, Product* product){
-    std::cout << "Username reached here: " << username << std::endl;
+    //std::cout << "Username reached here: " << username << std::endl;
     if (usernameToUser.find(username) != usernameToUser.end()) {
         usernameToCart[username].push_back(product);
     } else {
@@ -100,7 +100,7 @@ void MyDataStore::addToCart(const std::string& username, Product* product){
     
 }
 void MyDataStore::viewCart(const std::string& username){
-    std::cout<<username<<std::endl;
+    // std::cout<<username<<std::endl;
     if (usernameToCart.find(username) == usernameToCart.end()) {
         // std::cout<<"This ran and is causing the error"<<std::endl;
         std::cout << "Invalid username";
