@@ -71,7 +71,7 @@ int main(int argc, char* argv[])
         stringstream ss(line);
         string cmd;
         if((ss >> cmd)) {
-            std::cout << "Command received: [" << cmd << "]" << std::endl;
+            // std::cout << "Command received: [" << cmd << "]" << std::endl;
             if( cmd == "AND") {
                 string term;
                 vector<string> terms;
