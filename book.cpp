@@ -1,6 +1,7 @@
 #include "book.h"
 #include "util.h"
 #include <sstream>
+#include <iomanip>
 
 Book::Book(const std::string& name, const std::string& ISBN, const std::string& Author, double price, int qty) 
     : Product("book", name, price, qty), isbn_(ISBN), author_(Author){}
@@ -18,6 +19,7 @@ std::set<std::string> Book::keywords() const {
 std::string Book::displayString() const {
 
     std::ostringstream oss;
+    oss << std::fixed << std::setprecision(2);
     oss << name_ << "\n"
     << "Author: " << author_ << " ISBN: " << isbn_ << "\n"
     << price_ << " " << qty_ << " left.";

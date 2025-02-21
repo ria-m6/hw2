@@ -1,6 +1,7 @@
 #include "clothing.h"
 #include "util.h"
 #include <sstream>
+#include <iomanip>
 
 Clothing::Clothing(const std::string& name, double price, int qty, const std::string& SIZE, const std::string& BRAND) 
     : Product("clothing", name, price, qty), size_(SIZE), brand_(BRAND){}
@@ -16,6 +17,7 @@ std::set<std::string> Clothing::keywords() const{
 std::string Clothing::displayString() const{
 
     std::ostringstream oss;
+    oss << std::fixed << std::setprecision(2);
     oss << name_ << "\n"
     "Size: " << size_ << " Brand: " << brand_ << "\n"
     << price_ << " " << qty_ << " left.";

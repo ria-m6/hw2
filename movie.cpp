@@ -1,6 +1,7 @@
 #include "movie.h"
 #include "util.h"
 #include <sstream>
+#include <iomanip>
 
 Movie::Movie(const std::string& name, double price, int qty, const std::string& GENRE, const std::string& RATING) 
     : Product("movie", name, price, qty), genre_(GENRE), rating_(RATING){}
@@ -15,6 +16,7 @@ std::set<std::string> Movie::keywords() const{
 std::string Movie::displayString() const{
 
     std::ostringstream oss;
+    oss << std::fixed << std::setprecision(2);
     oss << name_ << "\n"
     << "Genre: " << genre_ << " Rating: " << rating_ << "\n"
     << price_ << " " << qty_ << " left.";
