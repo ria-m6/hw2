@@ -103,7 +103,7 @@ void MyDataStore::viewCart(const std::string& username){
     // std::cout<<username<<std::endl;
     if (usernameToCart.find(username) == usernameToCart.end()) {
         // std::cout<<"This ran and is causing the error"<<std::endl;
-        std::cout << "Invalid request\n";
+        std::cout << "Invalid username\n";
         return;
     }
     int index = 1;
@@ -116,7 +116,8 @@ void MyDataStore::viewCart(const std::string& username){
 }
 void MyDataStore::buyCart(const std::string& username){
     if (usernameToUser.find(username) == usernameToUser.end()) {
-        std::cout << "Invalid request\n";
+        // std::cout << "Invalid request\n";
+        std::cout << "Invalid username\n" << std::endl;
         return;
     }
     User* user = usernameToUser[username];
