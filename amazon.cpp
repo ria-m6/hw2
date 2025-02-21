@@ -107,7 +107,8 @@ int main(int argc, char* argv[])
                 string username;
                 int index;
                 if(ss >> username >> index){
-                    if(index >0 && static_cast<size_t>(index) <= hits.size()){
+                    //if(index >0 && static_cast<size_t>(index) <= hits.size()){
+                    if(index >=1 && index <= static_cast<int>(hits.size())){
                         ds.addToCart(username, hits[index-1]);
                         cout<< "Added to cart." << endl;
                     } else{
